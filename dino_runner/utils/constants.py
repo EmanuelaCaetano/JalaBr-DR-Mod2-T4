@@ -6,8 +6,16 @@ TITLE = "Chrome Dino Runner"
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
 FPS = 30
+JUMP_VEL = 8.5
+
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
+X_POS_BG = 0 
+Y_POS_BG = 380
+GAME_SPEED = 20
+
+X_POS = 80
+Y_POS = 310
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
 
