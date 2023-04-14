@@ -13,6 +13,7 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 X_POS_BG = 0 
 Y_POS_BG = 380
 GAME_SPEED = 20
+Y_POS_DUCK = 340 
 
 X_POS = 80
 Y_POS = 310
