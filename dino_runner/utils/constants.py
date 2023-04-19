@@ -79,3 +79,15 @@ BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
+
+#novas constantes de imagem
+
+FIRST = pygame.image.load(os.path.join(IMG_DIR, 'Other/First.png'))
+
+TRY = pygame.image.load(os.path.join(IMG_DIR, 'Other/TryAgain.png'))
+
+BOOM = pygame.image.load(os.path.join(IMG_DIR, 'Other/Boom.png'))
+
+OVER = pygame.image.load(os.path.join(IMG_DIR, 'Other/GameOver.png'))
+
+HART = pygame.image.load(os.path.join(IMG_DIR, 'Other/Hart.png'))
