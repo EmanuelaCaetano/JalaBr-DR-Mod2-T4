@@ -1,4 +1,5 @@
 import pygame
+import random
 
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, X_POS_BG, Y_POS_BG, GAME_SPEED, DEFAULT_TYPE, TRY, FIRST, BOOM, OVER, HART, CLOUD
 from dino_runner.utils.text_utils import draw_message_component
@@ -19,8 +20,8 @@ class Game:
         self.game_speed = GAME_SPEED
         self.x_pos_bg = X_POS_BG
         self.y_pos_bg = Y_POS_BG
-        self.y_pos_cloud = 20
-        self.x_pos_cloud = 1
+        self.x_pos_cloud = 0
+        self.y_pos_cloud = 125
         self.step_index = 0
         self.death_count = 3
     
@@ -28,7 +29,8 @@ class Game:
         self.best_score = 0
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
-        self.power_up_manager = PowerUpManager()
+        #self.power_up_manager = PowerUpManager()
+        self.power_up_manager = PowerUpManager(self)
         
 
     #score
@@ -85,13 +87,11 @@ class Game:
         self.draw_cloud()
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
-        #score
         self.draw_score()
-        pygame.display.update()
-        pygame.display.flip()
         self.draw_power_upper_time()
         self.power_up_manager.draw(self.screen)
-
+        pygame.display.update()
+        pygame.display.flip()
         
     def draw_background(self):
         image_width = BG.get_width()
@@ -105,10 +105,13 @@ class Game:
     def draw_cloud(self):
         image_width = CLOUD.get_width()
         self.screen.blit(CLOUD, (self.x_pos_cloud, self.y_pos_cloud))
-        self.screen.blit(CLOUD,(image_width + self.x_pos_cloud, self.y_pos_cloud))
-        if self.x_pos_cloud <= image_width:
+        #self.screen.blit(CLOUD, (image_width + self.x_pos_cloud, self.y_pos_cloud))
+        if self.x_pos_cloud <= -image_width:
             self.screen.blit(CLOUD, (image_width + self.x_pos_cloud, self.y_pos_cloud))
-        self. x_pos_cloud
+            self.x_pos_cloud = 1000
+            self.y_pos_cloud = random.randint(0, 100)
+        self.x_pos_cloud -= self.game_speed
+        
 
     def draw_power_upper_time(self):
         if self.player.has_power_up:
@@ -116,9 +119,10 @@ class Game:
             if time_to_show >= 0:
                 draw_message_component(
                     f"{self.player.type.capitalize()} enable for {time_to_show} seconds",
-                    self.screen, 
+                    self.screen,
+                    font_color= (255, 0, 0),
                     font_size = 18,
-                    pos_x_center = 50,
+                    pos_x_center = 550,
                     pos_y_center = 40
                 )
             else:
@@ -139,13 +143,13 @@ class Game:
         draw_message_component(
             f"Best Score: {self.best_score}",
             self.screen,
-            pos_x_center=100,
-            pos_y_center=50
+            pos_x_center=1000,
+            pos_y_center=100
         )
 
         self.x = -200       
         for i in range(self.death_count):
-            self.screen.blit(HART, (self.x + (50 * i), -150))
+            self.screen.blit(HART, (self.x + (50 * i), -220))
 
     #adicionar harts
 

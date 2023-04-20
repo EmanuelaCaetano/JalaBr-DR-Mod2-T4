@@ -11,7 +11,7 @@ JUMP_VEL = 8.5
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
 X_POS_BG = 0 
-Y_POS_BG = 380
+Y_POS_BG = -25
 GAME_SPEED = 20
 Y_POS_DUCK = 340 
 
@@ -76,13 +76,21 @@ HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
-HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
+LIFE = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEFAULT_TYPE = "default"
 
 SHIELD_TYPE = ""
 
+LIFE_TYPE = "teke a life"
+
+APPLE_TYPE = "with 3 get a life"
 #novas constantes de imagem
+
+SNOW = [
+    pygame.image.load(os.path.join(IMG_DIR, "Other/Snow.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Other/Snow2.png")),
+]
 
 FIRST = pygame.image.load(os.path.join(IMG_DIR, 'Other/First.png'))
 
@@ -93,3 +101,5 @@ BOOM = pygame.image.load(os.path.join(IMG_DIR, 'Other/Boom.png'))
 OVER = pygame.image.load(os.path.join(IMG_DIR, 'Other/GameOver.png'))
 
 HART = pygame.image.load(os.path.join(IMG_DIR, 'Other/Hart.png'))
+
+APPLE = pygame.image.load(os.path.join(IMG_DIR, 'Other/Apple.png'))
