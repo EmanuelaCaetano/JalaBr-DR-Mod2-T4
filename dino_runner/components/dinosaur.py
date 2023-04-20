@@ -2,12 +2,12 @@ import pygame
 import os
 
 from pygame.sprite import Sprite
-from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING, JUMP_VEL, X_POS, Y_POS, DEFAULT_TYPE, RUNNING_SHIELD, Y_POS_DUCK 
+from dino_runner.utils.constants import RUNNING, RUNNING_SHIELD, JUMPING, JUMPING_SHIELD, DUCKING, DUCKING_SHIELD, SHIELD_TYPE, JUMP_VEL, X_POS, Y_POS, DEFAULT_TYPE, RUNNING_SHIELD, Y_POS_DUCK, CLOUD
 
 
-RUN_IMG = {DEFAULT_TYPE: RUNNING}
-JUMP_IMG = {DEFAULT_TYPE: JUMPING}
-DUCK_IMG = {DEFAULT_TYPE: DUCKING}
+RUN_IMG = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD}
+JUMP_IMG = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD}
+DUCK_IMG = {DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD}
 
 class Dinosaur(Sprite):
     def __init__(self):
@@ -16,11 +16,20 @@ class Dinosaur(Sprite):
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = X_POS
         self.dino_rect.y = Y_POS
-        self.step_index = 0
+        self.x_pos_cloud = 0
         self.dino_run = True 
         self.dino_jump = False # passei para false para resolver o bug do inicio, pq ele estava pulando
         self.dino_duck = False # criação do duck
         self.jump_vel = JUMP_VEL
+        self.step_index = 0
+
+        self.setup_state()
+
+    def setup_state(self):
+        self.has_power_up = False
+        self.has_shield = False
+        self.show_text = False
+        self.shiel_time_up = 0
 
     def update(self, user_input):
         if self.dino_run:
