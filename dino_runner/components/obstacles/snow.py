@@ -5,7 +5,7 @@ import random
 class Snow(Obstacle):
     def __init__(self):
         super().__init__(SNOW, 0)
-        self.rect.y = self.y_pos_cloud =  100 #random.randint(0, 270)
+        self.rect.y = self.y_pos_cloud =  random.randint(0, 270)
         self.step_index = 0
 
     def draw(self, screen):

@@ -56,8 +56,6 @@ class Game:
             self.events()
             self.update()
             self.draw()
-        #Score, removo o quit()
-        #pygame.quit()
 
     def events(self):
         for event in pygame.event.get():
@@ -132,7 +130,7 @@ class Game:
 
     def draw_score(self):
         draw_message_component(
-            f"Score: {self.score}",
+            f"Pontuação: {self.score}",
             self.screen,
             pos_x_center=1000,
             pos_y_center=50
@@ -141,7 +139,7 @@ class Game:
             self.best_score = self.score
 
         draw_message_component(
-            f"Best Score: {self.best_score}",
+            f"Melhor pontuação: {self.best_score}",
             self.screen,
             pos_x_center=1000,
             pos_y_center=100
@@ -169,18 +167,18 @@ class Game:
         half_screen_width = SCREEN_WIDTH // 2
 
         if self.death_count == 3 and self.start_count == 1:
-            draw_message_component("Press any key to start", self.screen, pos_y_center=half_screen_height + 250)
+            draw_message_component("aperte qualquer tela para iniciar", self.screen, pos_y_center=half_screen_height + 250)
             self.screen.blit(FIRST, (half_screen_width - 270, half_screen_height - 300))
             self.start_count -= 1
         elif self.death_count > 0:
-            draw_message_component("Press any key to continue to play", self.screen, pos_y_center=half_screen_height + 140)
+            draw_message_component("aperte qualquer tela para continuar", self.screen, pos_y_center=half_screen_height + 140)
             draw_message_component(
-                f"Your Score: {self.score}",
+                f"Sua pontuação: {self.score}",
                 self.screen,
                 pos_y_center=half_screen_height - 150
             )          
             draw_message_component(
-                f"Death count: {self.death_count}",
+                f"que pena! Agoara só restam essas vidas: {self.death_count}",
                 self.screen,
                 pos_y_center=half_screen_height - 100
             )

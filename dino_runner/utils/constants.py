@@ -1,5 +1,11 @@
 import pygame
 import os
+import pygame.mixer
+
+pygame.mixer.pre_init()
+pygame.init()
+
+
 
 # Global Constants
 TITLE = "Chrome Dino Runner"
@@ -103,3 +109,5 @@ OVER = pygame.image.load(os.path.join(IMG_DIR, 'Other/GameOver.png'))
 HART = pygame.image.load(os.path.join(IMG_DIR, 'Other/Hart.png'))
 
 APPLE = pygame.image.load(os.path.join(IMG_DIR, 'Other/Apple.png'))
+
+SONG = pygame.mixer.Sound(os.path.join(IMG_DIR, 'Other/Song.mp3'))

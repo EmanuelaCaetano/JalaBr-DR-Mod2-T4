@@ -41,7 +41,7 @@ class PowerUpManager:
                 self.power_ups.remove(power_up)
     
                 self.apples += 1
-                if self.apples % 3 == 0:
+                if self.apples % 1 == 0:
                     self.game.death_count += 1
             elif player.dino_rect.colliderect(power_up.rect) and isinstance(power_up, Life):
                 self.game.death_count += 1
